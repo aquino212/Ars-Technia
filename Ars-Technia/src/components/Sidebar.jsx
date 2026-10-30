@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { styles } from '../styles/Sidebar';
-import { useApp } from '../context/context';
 
 import InicioIcon from '../../assets/Inicio.png';
 import ReservasIcon from '../../assets/Reservas.png';
@@ -9,55 +8,57 @@ import SalasIcon from '../../assets/Salas.png';
 import SolicitacoesIcon from '../../assets/Solicitacoes.png';
 import PerfilIcon from '../../assets/Perfil.png';
 
+const itensMenu = [
+  { nome: 'Início', icone: InicioIcon },
+  { nome: 'Reservas', icone: ReservasIcon },
+  { nome: 'Salas', icone: SalasIcon },
+  { nome: 'Solicitações', icone: SolicitacoesIcon },
+];
+
 export default function Sidebar() {
-  const { telaAtual, navegarPara } = useApp();
-
-  const menuItems = [
-    { id: 'Inicio', label: 'Início', icon: InicioIcon },
-    { id: 'Reservas', label: 'Reservas', icon: ReservasIcon },
-    { id: 'Salas', label: 'Salas', icon: SalasIcon },
-    { id: 'Solicitacoes', label: 'Solicitações', icon: SolicitacoesIcon },
-    { id: 'Perfil', label: 'Perfil', icon: PerfilIcon },
-  ];
-
   return (
-    <View style={styles.sidebar}>
-      <View>
-        <Text style={styles.sidebarSectionTitle}>MENU PRINCIPAL</Text>
+    <View style={styles.menu}>
+      <Text style={styles.menuTitulo}>MENU PRINCIPAL</Text>
 
-        {menuItems.map((item) => {
-          const isActive =
-            telaAtual === item.id ||
-            (telaAtual === 'DetalhesdoLocal' && item.id === 'Reservas');
+      {itensMenu.map((item, index) => (
+        <TouchableOpacity
+          key={item.nome}
+          style={[
+            styles.itemMenu,
+            index === 0 && styles.itemSelecionado,
+          ]}
+          activeOpacity={0.75}
+        >
+          <Image
+            source={item.icone}
+            style={[
+              styles.iconeMenu,
+              index === 0 && styles.iconeSelecionado,
+            ]}
+            resizeMode="contain"
+          />
+          <Text
+            style={[
+              styles.textoMenu,
+              index === 0 && styles.textoSelecionado,
+            ]}
+          >
+            {item.nome}
+          </Text>
+        </TouchableOpacity>
+      ))}
 
-          return (
-            <TouchableOpacity
-              key={item.id}
-              style={[styles.menuItem, isActive && styles.menuItemActive]}
-              onPress={() =>
-                navegarPara(item.id === 'Reservas' ? 'DetalhesdoLocal' : item.id)
-              }
-              activeOpacity={0.8}
-            >
-              <Image
-                source={item.icon}
-                style={[styles.menuIcon, isActive && styles.menuIconActive]}
-                resizeMode="contain"
-              />
-              <Text
-                style={
-                  isActive ? styles.menuItemTextActive : styles.menuItemText
-                }
-              >
-                {item.label}
-              </Text>
-            </TouchableOpacity>
-          );
-        })}
-      </View>
+      <TouchableOpacity style={styles.itemMenu} activeOpacity={0.75}>
+        <Image
+          source={PerfilIcon}
+          style={styles.iconeMenu}
+          resizeMode="contain"
+        />
+        <Text style={styles.textoMenu}>Perfil</Text>
+      </TouchableOpacity>
 
-      <View style={styles.sidebarFooter}>
-        <Text style={styles.sidebarFooterText}>Portal do professor</Text>
+      <View style={styles.rodapeMenu}>
+        <Text style={styles.rodapeTexto}>Portal do professor</Text>
       </View>
     </View>
   );

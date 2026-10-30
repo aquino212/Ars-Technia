@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { styles } from '../styles/Header';
 
-import LogoCamera from '../../assets/LogoCamera.png';
+import LogoEstrela from '../../assets/LogoCamera.png';
 import SolicitacoesIcon from '../../assets/Solicitacoes.png';
 import PerfilIcon from '../../assets/Perfil.png';
 
@@ -10,7 +10,11 @@ export default function Header({ nomeUsuario = 'Aléxia Victória' }) {
   return (
     <View style={styles.header}>
       <View style={styles.brandContainer}>
-        <Image source={LogoCamera} style={styles.logoImage} resizeMode="contain" />
+        <Image 
+          source={LogoEstrela} 
+          style={styles.logoImage} 
+          resizeMode="contain" 
+        />
         <View style={styles.brandTextContainer}>
           <Text style={styles.brandTitle}>Minhas salas</Text>
           <Text style={styles.brandSubtitle}>PROFESSOR</Text>

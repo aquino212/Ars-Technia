@@ -1,61 +1,60 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  sidebar: {
+  menu: {
     width: 240,
     backgroundColor: '#357DBF',
-    paddingVertical: 25,
-    paddingHorizontal: 15,
-    display: 'flex',
-    flexDirection: 'column',
+    paddingVertical: 24,
+    paddingHorizontal: 16,
     justifyContent: 'space-between',
-    minHeight: '100vh',
+    minHeight: 'calc(100vh - 65px)',
   },
-  sidebarSectionTitle: {
-    fontFamily: 'Montserrat_700Bold',
+  menuTitulo: {
     fontSize: 11,
+    fontWeight: 'bold',
     color: '#FFFFFF',
     opacity: 0.8,
     marginBottom: 20,
-    paddingLeft: 10,
-    letterSpacing: 0.5,
+    letterSpacing: 1,
+    paddingLeft: 8,
   },
-  menuItem: {
+  itemMenu: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 12,
-    paddingHorizontal: 15,
-    borderRadius: 12,
-    marginBottom: 8,
+    paddingHorizontal: 16,
+    borderRadius: 20,
+    marginBottom: 6,
   },
-  menuItemActive: {
+  itemSelecionado: {
     backgroundColor: '#FFFFFF',
   },
-  menuIcon: {
-    width: 20,
-    height: 20,
+  iconeMenu: {
+    width: 18,
+    height: 18,
     marginRight: 12,
+    tintColor: '#FFFFFF',
   },
-  menuItemText: {
-    fontFamily: 'Montserrat_600SemiBold',
-    fontSize: 15,
+  iconeSelecionado: {
+    tintColor: '#357DBF',
+  },
+  textoMenu: {
+    fontSize: 14,
     color: '#FFFFFF',
+    fontWeight: '500',
   },
-  menuItemTextActive: {
-    fontFamily: 'Montserrat_700Bold',
-    fontSize: 15,
+  textoSelecionado: {
     color: '#357DBF',
+    fontWeight: 'bold',
   },
-  sidebarFooter: {
-    paddingTop: 20,
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(255, 255, 255, 0.2)',
-    paddingLeft: 10,
+  rodapeMenu: {
+    marginTop: 'auto',
+    paddingTop: 16,
+    paddingLeft: 8,
   },
-  sidebarFooterText: {
-    fontFamily: 'Montserrat_400Regular',
-    color: '#FFFFFF',
+  rodapeTexto: {
     fontSize: 12,
-    opacity: 0.8,
+    color: '#FFFFFF',
+    opacity: 0.9,
   },
 });

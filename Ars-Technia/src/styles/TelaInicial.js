@@ -1,174 +1,164 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  layout: {
+  tela: {
     flex: 1,
-    flexDirection: 'row',
     minHeight: '100vh',
-    width: '100%',
+    backgroundColor: '#FFFFFF',
   },
-  mainContent: {
+  conteudo: {
     flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
-  scrollContent: {
+  areaPrincipal: {
+    flex: 1,
+    minWidth: 300,
     paddingHorizontal: '4%',
-    paddingVertical: 25,
-    width: '100%',
-    maxWidth: 1400,
-    alignSelf: 'center',
+    paddingVertical: 24,
   },
-  greeting: {
-    fontFamily: 'Montserrat_600SemiBold',
-    fontSize: 16,
-    color: '#2C3E50',
-    marginBottom: 6,
+  conteudoRolavel: {
+    paddingBottom: 40,
   },
-  topHeaderRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 25,
-    flexWrap: 'wrap',
-    gap: 15,
-  },
-  pageTitle: {
-    fontFamily: 'Montserrat_700Bold',
-    fontSize: 28,
-    color: '#000000',
-  },
-  searchContainer: {
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: '#DCDCDC',
-    borderRadius: 20,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    width: '100%',
-    maxWidth: 480,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-  },
-  searchIcon: {
-    width: 16,
-    height: 16,
-    tintColor: '#357DBF',
-  },
-  searchInput: {
-    fontFamily: 'Montserrat_400Regular',
+  ola: {
     fontSize: 14,
-    color: '#333333',
-    flex: 1,
+    color: '#475569',
+    marginBottom: 4,
   },
-  filtersRow: {
+  linhaTitulo: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: 16,
+    marginBottom: 24,
+  },
+  tituloPrincipal: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#0F172A',
+  },
+  busca: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 25,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    flex: 1,
+    minWidth: 240,
+    maxWidth: 420,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+  },
+  lupa: {
+    fontSize: 16,
+    color: '#64748B',
+    marginRight: 10,
+  },
+  inputBusca: {
+    flex: 1,
+    fontSize: 13,
+    color: '#1E293B',
+  },
+  linhaFiltros: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  listaFiltros: {
+    flexGrow: 0,
+    width: '100%',
+  },
+  filtrosConteudo: {
     flexDirection: 'row',
     gap: 10,
-    marginBottom: 25,
-    flexWrap: 'wrap',
+    paddingRight: 16,
   },
-  filterChip: {
-    paddingVertical: 7,
+  filtro: {
     paddingHorizontal: 18,
+    paddingVertical: 8,
     borderRadius: 20,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#DCDCDC',
+    borderColor: '#E2E8F0',
   },
-  filterChipActive: {
+  filtroAtivo: {
     backgroundColor: '#357DBF',
     borderColor: '#357DBF',
   },
-  filterChipText: {
-    fontFamily: 'Montserrat_600SemiBold',
+  textoFiltro: {
     fontSize: 13,
-    color: '#444444',
+    color: '#475569',
   },
-  filterChipTextActive: {
+  textoFiltroAtivo: {
     color: '#FFFFFF',
+    fontWeight: '600',
   },
-  sectionHeader: {
+  resultadosCabecalho: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 16,
   },
-  sectionTitle: {
-    fontFamily: 'Montserrat_700Bold',
-    fontSize: 22,
-    color: '#000000',
+  resultadosTitulo: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#0F172A',
   },
-  seeAllText: {
-    fontFamily: 'Montserrat_700Bold',
-    fontSize: 15,
-    color: '#000000',
+  verTodas: {
+    fontSize: 13,
+    color: '#357DBF',
+    fontWeight: '600',
   },
-  cardsGrid: {
+  grade: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 16,
-    width: '100%',
   },
-  card: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 14,
-    padding: 20,
+  cartao: {
     flexGrow: 1,
     flexShrink: 1,
-    flexBasis: 280,
+    flexBasis: 320,
     maxWidth: '100%',
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: 18,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
     shadowColor: '#000',
-    shadowOpacity: 0.03,
-    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.04,
+    shadowRadius: 8,
+    elevation: 2,
   },
-  badge: {
+  cartaoConteudo: {
+    flex: 1,
+  },
+  etiqueta: {
     alignSelf: 'flex-start',
-    paddingVertical: 4,
     paddingHorizontal: 12,
+    paddingVertical: 4,
     borderRadius: 12,
-    marginBottom: 12,
+    marginBottom: 10,
   },
-  badgeText: {
-    fontFamily: 'Montserrat_700Bold',
-    fontSize: 11,
+  etiquetaTexto: {
+    fontSize: 12,
   },
-  badgeReservada: {
-    backgroundColor: '#357DBF',
-  },
-  badgeTextReservada: {
-    color: '#FFFFFF',
-  },
-  badgeFechada: {
-    backgroundColor: '#F5B7B1',
-  },
-  badgeTextFechada: {
-    color: '#78281F',
-  },
-  badgeAberta: {
-    backgroundColor: '#D4F8C4',
-  },
-  badgeTextAberta: {
-    color: '#1E8449',
-  },
-  badgeManutencao: {
-    backgroundColor: '#FFF59D',
-  },
-  badgeTextManutencao: {
-    color: '#7D6608',
-  },
-  cardTitle: {
-    fontFamily: 'Montserrat_600SemiBold',
+  nomeSala: {
     fontSize: 14,
-    color: '#000000',
+    fontWeight: 'bold',
+    color: '#1E293B',
     marginBottom: 6,
   },
-  cardSubtitle: {
-    fontFamily: 'Montserrat_400Regular',
+  detalheSala: {
     fontSize: 12,
-    color: '#777777',
+    color: '#64748B',
+  },
+  semResultados: {
+    fontSize: 14,
+    color: '#64748B',
+    marginTop: 20,
   },
 });
