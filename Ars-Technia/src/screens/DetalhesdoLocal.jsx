@@ -175,13 +175,24 @@ export default function DetalhesdoLocal() {
                         colors={[CORES.creme, CORES.fundo]}
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 1 }}
-                        style={styles.areaPrincipal}
+                        style={[
+                            styles.areaPrincipal,
+                            celular && styles.areaPrincipalCelular,
+                        ]}
                     >
                         <ScrollView
                             showsVerticalScrollIndicator={false}
-                            contentContainerStyle={styles.conteudoRolavel}
+                            contentContainerStyle={[
+                                styles.conteudoRolavel,
+                                celular && styles.conteudoRolavelCelular,
+                            ]}
                         >
-                            <Text style={styles.tituloPrincipal}>
+                            <Text
+                                style={[
+                                    styles.tituloPrincipal,
+                                    celular && styles.tituloPrincipalCelular,
+                                ]}
+                            >
                                 Detalhes do Local
                             </Text>
 
@@ -192,6 +203,7 @@ export default function DetalhesdoLocal() {
                             )}
 
                             {celular ? (
+
                                 /* LAYOUT CELULAR */
                                 <View style={styles.cartaoMobile}>
 
@@ -211,34 +223,34 @@ export default function DetalhesdoLocal() {
                                         Detalhes do local
                                     </Text>
 
-                                    <View style={styles.blocoSala}>
+                                    <View style={styles.blocoSalaMobile}>
                                         <Text style={styles.nomeEspaco}>
                                             SALA MAC
                                         </Text>
 
-                                        <View style={styles.informacoesSala}>
-                                            <View style={styles.areaImagem}>
+                                        <View style={styles.informacoesSalaMobile}>
+                                            <View style={styles.areaImagemMobile}>
                                                 <Image
                                                     source={require('../../assets/SalaSenai.png')}
-                                                    style={styles.fotoSala}
+                                                    style={styles.fotoSalaMobile}
                                                     resizeMode="cover"
                                                 />
                                             </View>
 
-                                            <View style={styles.dadosSala}>
-                                                <Text style={styles.dadoSala}>
+                                            <View style={styles.dadosSalaMobile}>
+                                                <Text style={styles.dadoSalaMobile}>
                                                     Segundo andar
                                                 </Text>
 
-                                                <Text style={styles.dadoSala}>
+                                                <Text style={styles.dadoSalaMobile}>
                                                     Professora Jéssica
                                                 </Text>
 
-                                                <Text style={styles.dadoSala}>
+                                                <Text style={styles.dadoSalaMobile}>
                                                     Máximo 30 alunos
                                                 </Text>
 
-                                                <Text style={styles.dadoSala}>
+                                                <Text style={styles.dadoSalaMobile}>
                                                     08:30 até às 11:30
                                                 </Text>
                                             </View>
@@ -266,15 +278,18 @@ export default function DetalhesdoLocal() {
                                     </View>
 
                                     <TouchableOpacity
-                                        style={styles.botaoSolicitacao}
+                                        style={styles.botaoSolicitacaoMobile}
                                         activeOpacity={0.8}
                                     >
                                         <Text style={styles.textoBotaoSolicitacao}>
                                             Enviar Solicitação
                                         </Text>
                                     </TouchableOpacity>
+
                                 </View>
+
                             ) : (
+
                                 /* LAYOUT COMPUTADOR */
                                 <View style={styles.colunas}>
 
@@ -359,6 +374,7 @@ export default function DetalhesdoLocal() {
                                             </View>
                                         </View>
                                     </View>
+
                                 </View>
                             )}
                         </ScrollView>
