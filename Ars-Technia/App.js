@@ -1,8 +1,11 @@
 
 import React from "react";
-import DetalhesdoLocal from "./src/screens/DetalhesdoLocal";
-import TelaInicialGESTAO from "./src/screens/TelaInicialGESTAO";
+import Agendamento from "./src/screens/Agendamento";
+import CadastroDeSalas from "./src/screens/CadastroDeSalas";
+import EditarPerfil from "./src/screens/EditarPerfil";  
+
+
 
 export default function App() {
-  return <TelaInicialGESTAO />;
+  return <EditarPerfil />;
 }
