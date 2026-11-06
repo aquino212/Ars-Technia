@@ -8,20 +8,18 @@ import {
     TouchableOpacity,
     Image,
     StatusBar,
+    useWindowDimensions,
 } from 'react-native';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from 'expo-font';
+
 import styles from '../styles/DetalhesdoLocal';
 
 const CORES = {
     azul: '#357DBF',
-    azulEscuro: '#285D8C',
     fundo: '#A6BCC9',
     creme: '#FFF4EB',
-    branco: '#F1F0EF',
-    texto: '#171717',
-    roxo: '#3E4BCC',
 };
 
 const itensMenu = [
@@ -33,6 +31,9 @@ const itensMenu = [
 ];
 
 export default function DetalhesdoLocal() {
+    const { width } = useWindowDimensions();
+    const celular = width <= 600;
+
     const [fontesCarregadas] = useFonts({
         'Montserrat-Regular': require('../../assets/fonts/Montserrat-Regular.ttf'),
         'Montserrat-SemiBold': require('../../assets/fonts/Montserrat-SemiBold.ttf'),
@@ -48,75 +49,128 @@ export default function DetalhesdoLocal() {
             <StatusBar barStyle="dark-content" />
 
             <View style={styles.aplicativo}>
-                <View style={styles.cabecalho}>
-                    <Image
-                        source={require('../../assets/Logo.png')}
-                        style={styles.imagemLogo}
-                        resizeMode="contain"
-                    />
 
-                    <View style={styles.marca}>
-                        <Text style={styles.marcaTitulo}>Minhas salas</Text>
-                        <Text style={styles.marcaSubtitulo}>PROFESSOR</Text>
-                    </View>
-
-                    <View style={styles.espaco} />
-
-                    <Image
-                        source={require('../../assets/SolicitacoesAzul.png')}
-                        style={styles.iconeNotificacao}
-                        resizeMode="contain"
-                    />
-
-                    <View style={styles.avatar}>
+                {/* CABEÇALHO - SOMENTE DESKTOP */}
+                {!celular && (
+                    <View style={styles.cabecalho}>
                         <Image
-                            source={require('../../assets/PerfilAzul.png')}
-                            style={styles.iconePerfil}
+                            source={require('../../assets/Logo.png')}
+                            style={styles.imagemLogo}
                             resizeMode="contain"
                         />
-                    </View>
 
-                    <Text style={styles.usuario}>Alexia Vitória</Text>
-                </View>
+                        <View style={styles.marca}>
+                            <Text style={styles.marcaTitulo}>
+                                Minhas salas
+                            </Text>
 
-                <View style={styles.conteudo}>
-                    <View style={styles.menu}>
-                        <Text style={styles.menuTitulo}>MENU PRINCIPAL</Text>
-
-                        {itensMenu.map((item) => (
-                            <TouchableOpacity
-                                key={item.nome}
-                                style={[
-                                    styles.itemMenu,
-                                    item.nome === 'Reservas' && styles.itemSelecionado,
-                                ]}
-                            >
-                                <Image
-                                    source={item.icone}
-                                    style={[
-                                        styles.iconeMenu,
-                                        item.nome === 'Reservas' && styles.iconeSelecionado,
-                                    ]}
-                                    resizeMode="contain"
-                                />
-
-                                <Text
-                                    style={[
-                                        styles.textoMenu,
-                                        item.nome === 'Reservas' && styles.textoSelecionado,
-                                    ]}
-                                >
-                                    {item.nome}
-                                </Text>
-                            </TouchableOpacity>
-                        ))}
-
-                        <View style={styles.rodapeMenu}>
-                            <Text style={styles.rodapeTexto}>Portal do professor</Text>
-                            <Text style={styles.rodapeVersao}>Versão Desktop</Text>
+                            <Text style={styles.marcaSubtitulo}>
+                                PROFESSOR
+                            </Text>
                         </View>
+
+                        <View style={styles.espaco} />
+
+                        <Image
+                            source={require('../../assets/SolicitacoesAzul.png')}
+                            style={styles.iconeNotificacao}
+                            resizeMode="contain"
+                        />
+
+                        <View style={styles.avatar}>
+                            <Image
+                                source={require('../../assets/PerfilAzul.png')}
+                                style={styles.iconePerfil}
+                                resizeMode="contain"
+                            />
+                        </View>
+
+                        <Text style={styles.usuario}>
+                            Alexia Vitória
+                        </Text>
+                    </View>
+                )}
+
+                {/* CONTEÚDO */}
+                <View
+                    style={[
+                        styles.conteudo,
+                        celular && styles.conteudoCelular,
+                    ]}
+                >
+
+                    {/* MENU */}
+                    <View
+                        style={[
+                            styles.menu,
+                            celular && styles.menuCelular,
+                        ]}
+                    >
+                        {!celular && (
+                            <Text style={styles.menuTitulo}>
+                                MENU PRINCIPAL
+                            </Text>
+                        )}
+
+                        {itensMenu.map((item) => {
+                            const selecionado = item.nome === 'Reservas';
+
+                            return (
+                                <TouchableOpacity
+                                    key={item.nome}
+                                    style={[
+                                        styles.itemMenu,
+                                        celular && styles.itemMenuCelular,
+                                        selecionado &&
+                                            (celular
+                                                ? styles.itemSelecionadoCelular
+                                                : styles.itemSelecionado),
+                                    ]}
+                                    activeOpacity={0.75}
+                                >
+                                    <Image
+                                        source={item.icone}
+                                        style={[
+                                            styles.iconeMenu,
+                                            celular && styles.iconeMenuCelular,
+                                            selecionado &&
+                                                (celular
+                                                    ? styles.iconeSelecionadoCelular
+                                                    : styles.iconeSelecionado),
+                                        ]}
+                                        resizeMode="contain"
+                                    />
+
+                                    <Text
+                                        style={[
+                                            styles.textoMenu,
+                                            celular && styles.textoMenuCelular,
+                                            selecionado && styles.textoSelecionado,
+                                            selecionado &&
+                                                celular &&
+                                                styles.textoSelecionadoCelular,
+                                        ]}
+                                    >
+                                        {item.nome}
+                                    </Text>
+                                </TouchableOpacity>
+                            );
+                        })}
+
+                        {!celular && (
+                            <View style={styles.rodapeMenu}>
+                                <Text style={styles.rodapeTexto}>
+                                    Portal do professor
+                                </Text>
+
+                                <Text style={styles.rodapeVersao}>
+                                    Versão Desktop
+                                </Text>
+                            </View>
+                        )}
                     </View>
 
+                    {/* ÁREA PRINCIPAL */}
                     <LinearGradient
                         colors={[CORES.creme, CORES.fundo]}
                         start={{ x: 0, y: 0 }}
@@ -131,15 +185,17 @@ export default function DetalhesdoLocal() {
                                 Detalhes do Local
                             </Text>
 
-                            <Text style={styles.subtituloPagina}>
-                                Reservas / Detalhes do Local
-                            </Text>
+                            {!celular && (
+                                <Text style={styles.subtituloPagina}>
+                                    Reservas / Detalhes do Local
+                                </Text>
+                            )}
 
-                            <View style={styles.colunas}>
-                                <View style={styles.cartaoSala}>
-                                    <View style={styles.linhaSala}>
-                                        <Text style={styles.nomeSala}>Sala 14</Text>
+                            {celular ? (
+                                /* LAYOUT CELULAR */
+                                <View style={styles.cartaoMobile}>
 
+                                    <View style={styles.linhaSalaMobile}>
                                         <View style={styles.status}>
                                             <Text style={styles.statusTexto}>
                                                 Reservada
@@ -147,52 +203,52 @@ export default function DetalhesdoLocal() {
                                         </View>
                                     </View>
 
-                                    <Text style={styles.tituloDetalhes}>
+                                    <Text style={styles.nomeSalaMobile}>
+                                        Sala 14
+                                    </Text>
+
+                                    <Text style={styles.tituloDetalhesMobile}>
                                         Detalhes do local
                                     </Text>
 
                                     <View style={styles.blocoSala}>
-                                        <Text style={styles.nomeEspaco}>SALA MAC</Text>
+                                        <Text style={styles.nomeEspaco}>
+                                            SALA MAC
+                                        </Text>
 
                                         <View style={styles.informacoesSala}>
-                                            <TouchableOpacity
-                                                style={styles.areaImagem}
-                                                activeOpacity={0.8}
-                                            >
-                                                <Text style={styles.maisImagem}>＋</Text>
-                                            </TouchableOpacity>
+                                            <View style={styles.areaImagem}>
+                                                <Image
+                                                    source={require('../../assets/SalaSenai.png')}
+                                                    style={styles.fotoSala}
+                                                    resizeMode="cover"
+                                                />
+                                            </View>
 
                                             <View style={styles.dadosSala}>
                                                 <Text style={styles.dadoSala}>
                                                     Segundo andar
                                                 </Text>
+
                                                 <Text style={styles.dadoSala}>
                                                     Professora Jéssica
                                                 </Text>
+
                                                 <Text style={styles.dadoSala}>
                                                     Máximo 30 alunos
                                                 </Text>
+
                                                 <Text style={styles.dadoSala}>
                                                     08:30 até às 11:30
                                                 </Text>
                                             </View>
                                         </View>
                                     </View>
-                                </View>
 
-                                <View style={styles.cartaoDetalhes}>
-                                    <Text style={styles.tituloPainel}>
-                                        Detalhes do local
-                                    </Text>
-
-                                    <View style={styles.comunicacao}>
+                                    <View style={styles.comunicacaoMobile}>
                                         <View style={styles.linhaComunicacao}>
                                             <Text style={styles.tituloComunicacao}>
                                                 Comunicação
-                                            </Text>
-
-                                            <Text style={styles.dataComunicacao}>
-                                                Atualizado hoje
                                             </Text>
                                         </View>
 
@@ -204,12 +260,107 @@ export default function DetalhesdoLocal() {
                                             />
 
                                             <Text style={styles.textoComunicacao}>
-                                                Aviso importante sobre o uso das salas e agendamentos.
+                                                Professor confirmou a reserva da sala para hoje.
                                             </Text>
                                         </View>
                                     </View>
+
+                                    <TouchableOpacity
+                                        style={styles.botaoSolicitacao}
+                                        activeOpacity={0.8}
+                                    >
+                                        <Text style={styles.textoBotaoSolicitacao}>
+                                            Enviar Solicitação
+                                        </Text>
+                                    </TouchableOpacity>
                                 </View>
-                            </View>
+                            ) : (
+                                /* LAYOUT COMPUTADOR */
+                                <View style={styles.colunas}>
+
+                                    <View style={styles.cartaoSala}>
+                                        <View style={styles.linhaSala}>
+                                            <Text style={styles.nomeSala}>
+                                                Sala 14
+                                            </Text>
+
+                                            <View style={styles.status}>
+                                                <Text style={styles.statusTexto}>
+                                                    Reservada
+                                                </Text>
+                                            </View>
+                                        </View>
+
+                                        <Text style={styles.tituloDetalhes}>
+                                            Detalhes do local
+                                        </Text>
+
+                                        <View style={styles.blocoSala}>
+                                            <Text style={styles.nomeEspaco}>
+                                                SALA MAC
+                                            </Text>
+
+                                            <View style={styles.informacoesSala}>
+                                                <View style={styles.areaImagem}>
+                                                    <Image
+                                                        source={require('../../assets/SalaSenai.png')}
+                                                        style={styles.fotoSala}
+                                                        resizeMode="cover"
+                                                    />
+                                                </View>
+
+                                                <View style={styles.dadosSala}>
+                                                    <Text style={styles.dadoSala}>
+                                                        Segundo andar
+                                                    </Text>
+
+                                                    <Text style={styles.dadoSala}>
+                                                        Professora Jéssica
+                                                    </Text>
+
+                                                    <Text style={styles.dadoSala}>
+                                                        Máximo 30 alunos
+                                                    </Text>
+
+                                                    <Text style={styles.dadoSala}>
+                                                        08:30 até às 11:30
+                                                    </Text>
+                                                </View>
+                                            </View>
+                                        </View>
+                                    </View>
+
+                                    <View style={styles.cartaoDetalhes}>
+                                        <Text style={styles.tituloPainel}>
+                                            Detalhes do local
+                                        </Text>
+
+                                        <View style={styles.comunicacao}>
+                                            <View style={styles.linhaComunicacao}>
+                                                <Text style={styles.tituloComunicacao}>
+                                                    Comunicação
+                                                </Text>
+
+                                                <Text style={styles.dataComunicacao}>
+                                                    Atualizado hoje
+                                                </Text>
+                                            </View>
+
+                                            <View style={styles.mensagem}>
+                                                <Image
+                                                    source={require('../../assets/Megafone.png')}
+                                                    style={styles.iconeMegafone}
+                                                    resizeMode="contain"
+                                                />
+
+                                                <Text style={styles.textoComunicacao}>
+                                                    Aviso importante sobre o uso das salas e agendamentos.
+                                                </Text>
+                                            </View>
+                                        </View>
+                                    </View>
+                                </View>
+                            )}
                         </ScrollView>
                     </LinearGradient>
                 </View>

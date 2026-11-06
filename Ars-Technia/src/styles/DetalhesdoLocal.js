@@ -12,19 +12,19 @@ const CORES = {
 };
 
 const styles = StyleSheet.create({
+
     tela: {
         flex: 1,
         backgroundColor: CORES.fundo,
-        paddingTop: 0,
-        paddingHorizontal: 0,
     },
 
     aplicativo: {
         flex: 1,
         backgroundColor: CORES.fundo,
         overflow: 'hidden',
-        borderRadius: 0,
     },
+
+    /* CABEÇALHO */
 
     cabecalho: {
         minHeight: 60,
@@ -88,11 +88,41 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
 
+    /* CONTEÚDO GERAL */
+
     conteudo: {
         flex: 1,
         flexDirection: 'row',
         minHeight: 0,
     },
+
+    areaPrincipal: {
+        flex: 1,
+        minWidth: 0,
+        paddingHorizontal: 30,
+        paddingTop: 30,
+    },
+
+    conteudoRolavel: {
+        paddingBottom: 30,
+        flexGrow: 1,
+    },
+
+    tituloPrincipal: {
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 28,
+        color: '#101010',
+    },
+
+    subtituloPagina: {
+        fontFamily: 'Montserrat-SemiBold',
+        fontSize: 18,
+        color: '#101010',
+        marginTop: 7,
+        marginBottom: 33,
+    },
+
+    /* MENU DESKTOP */
 
     menu: {
         width: 175,
@@ -166,30 +196,7 @@ const styles = StyleSheet.create({
         marginTop: 4,
     },
 
-    areaPrincipal: {
-        flex: 1,
-        minWidth: 0,
-        paddingHorizontal: 30,
-        paddingTop: 30,
-    },
-
-    conteudoRolavel: {
-        paddingBottom: 30,
-    },
-
-    tituloPrincipal: {
-        fontFamily: 'Montserrat-Bold',
-        fontSize: 28,
-        color: '#101010',
-    },
-
-    subtituloPagina: {
-        fontFamily: 'Montserrat-SemiBold',
-        fontSize: 18,
-        color: '#101010',
-        marginTop: 7,
-        marginBottom: 33,
-    },
+    /* CARTÕES DESKTOP */
 
     colunas: {
         flexDirection: 'row',
@@ -226,6 +233,7 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         paddingHorizontal: 10,
         paddingVertical: 5,
+        alignSelf: 'flex-start',
     },
 
     statusTexto: {
@@ -243,7 +251,7 @@ const styles = StyleSheet.create({
     },
 
     blocoSala: {
-        backgroundColor: '#E7CEAD',
+        backgroundColor: '#F7DDBB',
         borderRadius: 14,
         padding: 12,
     },
@@ -252,7 +260,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat-Bold',
         fontSize: 11,
         color: '#111111',
-        marginBottom: 5,
+        marginBottom: 10,
     },
 
     informacoesSala: {
@@ -267,14 +275,14 @@ const styles = StyleSheet.create({
         height: 190,
         backgroundColor: CORES.branco,
         borderRadius: 14,
+        overflow: 'hidden',
         alignItems: 'center',
         justifyContent: 'center',
     },
 
-    maisImagem: {
-        fontFamily: 'Montserrat-Regular',
-        color: '#91B2C7',
-        fontSize: 28,
+    fotoSala: {
+        width: '100%',
+        height: '100%',
     },
 
     dadosSala: {
@@ -352,6 +360,7 @@ const styles = StyleSheet.create({
     },
 
     textoComunicacao: {
+        flex: 1,
         fontFamily: 'Montserrat-Regular',
         color: '#FFFFFF',
         fontSize: 10,
@@ -360,7 +369,7 @@ const styles = StyleSheet.create({
 
     botaoSolicitacao: {
         backgroundColor: CORES.azul,
-        borderRadius: 10,
+        borderRadius: 11,
         minHeight: 40,
         alignItems: 'center',
         justifyContent: 'center',
@@ -373,6 +382,112 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontSize: 13,
     },
+
+    /* RESPONSIVIDADE CELULAR */
+
+    conteudoCelular: {
+        flexDirection: 'column-reverse',
+    },
+
+    menuCelular: {
+        width: '100%',
+        height: 68,
+        minHeight: 68,
+        paddingHorizontal: 5,
+        paddingTop: 7,
+        paddingBottom: 4,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+    },
+
+    itemMenuCelular: {
+        flex: 1,
+        minHeight: 55,
+        marginBottom: 0,
+        paddingHorizontal: 0,
+        paddingVertical: 3,
+        borderRadius: 9,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 3,
+    },
+
+    iconeMenuCelular: {
+        width: 24,
+        height: 24,
+        marginRight: 0,
+        tintColor: '#FFFFFF',
+    },
+
+    textoMenuCelular: {
+        fontSize: 9,
+        textAlign: 'center',
+        color: '#FFFFFF',
+    },
+
+    itemSelecionadoCelular: {
+        backgroundColor: 'transparent',
+    },
+
+    iconeSelecionadoCelular: {
+        tintColor: '#FFCEAB',
+    },
+
+    textoSelecionadoCelular: {
+        color: '#FFCEAB',
+    },
+
+    cartaoMobile: {
+        backgroundColor: 'rgba(248,248,248,0.96)',
+        borderWidth: 1,
+        borderColor: '#B5C9D3',
+        borderRadius: 16,
+        padding: 14,
+        marginTop: 25,
+        marginHorizontal: 1,
+        minHeight: 580,
+    },
+
+    linhaSalaMobile: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+
+    nomeSalaMobile: {
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 23,
+        color: '#111111',
+        marginTop: 8,
+        marginBottom: 7,
+    },
+
+    tituloDetalhesMobile: {
+        fontFamily: 'Montserrat-SemiBold',
+        fontSize: 13,
+        color: '#111111',
+        marginBottom: 9,
+    },
+
+    comunicacaoMobile: {
+        backgroundColor: CORES.roxo,
+        borderRadius: 15,
+        padding: 12,
+        minHeight: 79,
+        marginTop: 25,
+    },
+
+    botaoSolicitacao: {
+        backgroundColor: CORES.azul,
+        borderRadius: 11,
+        minHeight: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 100,
+        paddingHorizontal: 8,
+    },
+
 });
 
 export default styles;

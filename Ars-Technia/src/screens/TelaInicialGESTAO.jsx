@@ -1,7 +1,5 @@
 
 import React, { useState } from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
-import { useFonts } from 'expo-font';
 
 import {
     View,
@@ -11,7 +9,11 @@ import {
     TouchableOpacity,
     StatusBar,
     Image,
+    useWindowDimensions,
 } from 'react-native';
+
+import { LinearGradient } from 'expo-linear-gradient';
+import { useFonts } from 'expo-font';
 
 import styles from '../styles/TelaInicialGESTAO';
 
@@ -44,9 +46,10 @@ const filtros = [
 
 const itensMenu = [
     { nome: 'Início', icone: require('../../assets/Inicio.png') },
-    { nome: 'Reservas', icone: require('../../assets/Reservas.png') },
+    { nome: 'Reservadas', icone: require('../../assets/Reservas.png') },
     { nome: 'Salas', icone: require('../../assets/Salas.png') },
     { nome: 'Solicitações', icone: require('../../assets/Solicitacoes.png') },
+    { nome: 'Perfil', icone: require('../../assets/Perfil.png') },
 ];
 
 function corStatus(status) {
@@ -65,6 +68,9 @@ function corStatus(status) {
 }
 
 export default function TelaInicialGESTAO() {
+    const { width } = useWindowDimensions();
+    const celular = width <= 600;
+
     const [filtro, setFiltro] = useState('Todos');
     const [busca, setBusca] = useState('');
     const [salas, setSalas] = useState(salasIniciais);
@@ -106,18 +112,17 @@ export default function TelaInicialGESTAO() {
     }
 
     function alternarStatus(id) {
+        const ordemStatus = ['Aberta', 'Reservada', 'Manutenção', 'Fechada'];
+
         setSalas((atuais) =>
-            atuais.map((sala) =>
-                sala.id === id
-                    ? {
-                        ...sala,
-                        status:
-                            sala.status === 'Aberta'
-                                ? 'Reservada'
-                                : 'Aberta',
-                    }
-                    : sala
-            )
+            atuais.map((item) => {
+                if (item.id !== id) return item;
+
+                const indiceAtual = ordemStatus.indexOf(item.status);
+                const proximoStatus = ordemStatus[(indiceAtual + 1) % ordemStatus.length];
+
+                return { ...item, status: proximoStatus };
+            })
         );
     }
 
@@ -126,130 +131,128 @@ export default function TelaInicialGESTAO() {
             <StatusBar barStyle="dark-content" />
 
             <View style={styles.aplicativo}>
-                <View style={styles.cabecalho}>
-                    <View style={styles.logo}>
-                        <Image
-                            source={require('../../assets/Logo.png')}
-                            style={styles.imagemLogo}
-                            resizeMode="contain"
-                        />
-                    </View>
 
-                    <View style={styles.marca}>
-                        <Text style={styles.marcaTitulo}>
-                            Minhas salas
-                        </Text>
-
-                        <Text style={styles.marcaSubtitulo}>
-                            PROFESSOR
-                        </Text>
-                    </View>
-
-                    <View style={styles.espaco} />
-
-                    <Image
-                        source={require('../../assets/SolicitacoesAzul.png')}
-                        style={styles.sino}
-                        resizeMode="contain"
-                    />
-
-                    <View style={styles.avatar}>
-                        <Image
-                            source={require('../../assets/PerfilAzul.png')}
-                            style={styles.avatarIcone}
-                            resizeMode="contain"
-                        />
-                    </View>
-
-                    <Text style={styles.usuario}>
-                        Alexia Vitória
-                    </Text>
-                </View>
-
-                <View style={styles.conteudo}>
-                    <View style={styles.menu}>
-                        <Text style={styles.menuTitulo}>
-                            MENU PRINCIPAL
-                        </Text>
-
-                        {itensMenu.map((item, index) => (
-                            <TouchableOpacity
-                                key={item.nome}
-                                style={[
-                                    styles.itemMenu,
-                                    index === 0 && styles.itemSelecionado,
-                                ]}
-                                activeOpacity={0.75}
-                            >
-                                <Image
-                                    source={item.icone}
-                                    style={[
-                                        styles.iconeMenu,
-                                        index === 0 && styles.iconeSelecionado,
-                                    ]}
-                                    resizeMode="contain"
-                                />
-
-                                <Text
-                                    style={[
-                                        styles.textoMenu,
-                                        index === 0 && styles.textoSelecionado,
-                                    ]}
-                                >
-                                    {item.nome}
-                                </Text>
-                            </TouchableOpacity>
-                        ))}
-
-                        <TouchableOpacity
-                            style={styles.itemMenu}
-                            activeOpacity={0.75}
-                        >
+                {/* CABEÇALHO DESKTOP */}
+                {!celular && (
+                    <View style={styles.cabecalho}>
+                        <View style={styles.logo}>
                             <Image
-                                source={require('../../assets/Perfil.png')}
-                                style={styles.iconeMenu}
+                                source={require('../../assets/Logo.png')}
+                                style={styles.imagemLogo}
                                 resizeMode="contain"
                             />
-
-                            <Text style={styles.textoMenu}>
-                                Perfil
-                            </Text>
-                        </TouchableOpacity>
-
-                        <View style={styles.rodapeMenu}>
-                            <Text style={styles.rodapeTexto}>
-                                Portal do professor
-                            </Text>
-
-                            <Text style={styles.rodapeVersao}>
-                                Versão Desktop
-                            </Text>
                         </View>
-                    </View>
 
+                        <View style={styles.marca}>
+                            <Text style={styles.marcaTitulo}>Minhas salas</Text>
+                            <Text style={styles.marcaSubtitulo}>GESTÃO</Text>
+                        </View>
+
+                        <View style={styles.espaco} />
+
+                        <Image
+                            source={require('../../assets/SolicitacoesAzul.png')}
+                            style={styles.sino}
+                            resizeMode="contain"
+                        />
+
+                        <View style={styles.avatar}>
+                            <Image
+                                source={require('../../assets/PerfilAzul.png')}
+                                style={styles.avatarIcone}
+                                resizeMode="contain"
+                            />
+                        </View>
+
+                        <Text style={styles.usuario}>Alexia Vitória</Text>
+                    </View>
+                )}
+
+                <View
+                    style={[
+                        styles.conteudo,
+                        celular && styles.conteudoCelular,
+                    ]}
+                >
+
+                    {/* MENU DESKTOP */}
+                    {!celular && (
+                        <View style={styles.menu}>
+                            <Text style={styles.menuTitulo}>MENU PRINCIPAL</Text>
+
+                            {itensMenu.map((item, index) => (
+                                <TouchableOpacity
+                                    key={item.nome}
+                                    style={[
+                                        styles.itemMenu,
+                                        index === 0 && styles.itemSelecionado,
+                                    ]}
+                                    activeOpacity={0.75}
+                                >
+                                    <Image
+                                        source={item.icone}
+                                        style={[
+                                            styles.iconeMenu,
+                                            index === 0 && styles.iconeSelecionado,
+                                        ]}
+                                        resizeMode="contain"
+                                    />
+
+                                    <Text
+                                        style={[
+                                            styles.textoMenu,
+                                            index === 0 && styles.textoSelecionado,
+                                        ]}
+                                    >
+                                        {item.nome === 'Reservadas' ? 'Reservas' : item.nome}
+                                    </Text>
+                                </TouchableOpacity>
+                            ))}
+
+                            <View style={styles.rodapeMenu}>
+                                <Text style={styles.rodapeTexto}>
+                                    Portal do professor
+                                </Text>
+                                <Text style={styles.rodapeVersao}>
+                                    Versão Desktop
+                                </Text>
+                            </View>
+                        </View>
+                    )}
+
+                    {/* ÁREA PRINCIPAL */}
                     <LinearGradient
                         colors={['#FFF4EB', '#A6BCC9']}
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 1 }}
-                        style={styles.areaPrincipal}
+                        style={[
+                            styles.areaPrincipal,
+                            celular && styles.areaPrincipalCelular,
+                        ]}
                     >
                         <ScrollView
                             showsVerticalScrollIndicator={false}
-                            contentContainerStyle={styles.conteudoRolavel}
+                            contentContainerStyle={[
+                                styles.conteudoRolavel,
+                                celular && styles.conteudoRolavelCelular,
+                            ]}
                         >
                             <Text style={styles.ola}>
                                 Olá, Alexia
                             </Text>
 
-                            <View style={styles.linhaTitulo}>
+                            <View
+                                style={[
+                                    styles.linhaTitulo,
+                                    celular && styles.linhaTituloCelular,
+                                ]}
+                            >
                                 <Text style={styles.tituloPrincipal}>
                                     Minhas salas
                                 </Text>
 
                                 <View style={styles.busca}>
-                                    <Text style={styles.lupa}>
-                                        ⌕
-                                    </Text>
+                                    <Text style={styles.lupa}>⌕</Text>
 
                                     <TextInput
                                         style={styles.inputBusca}
@@ -261,34 +264,63 @@ export default function TelaInicialGESTAO() {
                                 </View>
                             </View>
 
-                            <View style={styles.linhaFiltros}>
-                                <ScrollView
-                                    horizontal
-                                    showsHorizontalScrollIndicator={false}
-                                    style={styles.listaFiltros}
-                                    contentContainerStyle={styles.filtrosConteudo}
-                                >
-                                    {filtros.map((nome) => (
-                                        <TouchableOpacity
-                                            key={nome}
-                                            onPress={() => setFiltro(nome)}
-                                            style={[
-                                                styles.filtro,
-                                                filtro === nome && styles.filtroAtivo,
-                                            ]}
-                                        >
-                                            <Text
+                            {/* FILTROS */}
+                            <View
+                                style={[
+                                    styles.linhaFiltros,
+                                    celular && styles.linhaFiltrosCelular,
+                                ]}
+                            >
+                                {celular ? (
+                                    <View style={styles.filtrosMobile}>
+                                        {filtros.map((nome) => (
+                                            <TouchableOpacity
+                                                key={nome}
+                                                onPress={() => setFiltro(nome)}
                                                 style={[
-                                                    styles.textoFiltro,
-                                                    filtro === nome &&
-                                                    styles.textoFiltroAtivo,
+                                                    styles.filtro,
+                                                    filtro === nome && styles.filtroAtivo,
                                                 ]}
                                             >
-                                                {nome}
-                                            </Text>
-                                        </TouchableOpacity>
-                                    ))}
-                                </ScrollView>
+                                                <Text
+                                                    style={[
+                                                        styles.textoFiltro,
+                                                        filtro === nome && styles.textoFiltroAtivo,
+                                                    ]}
+                                                >
+                                                    {nome}
+                                                </Text>
+                                            </TouchableOpacity>
+                                        ))}
+                                    </View>
+                                ) : (
+                                    <ScrollView
+                                        horizontal
+                                        showsHorizontalScrollIndicator={false}
+                                        style={styles.listaFiltros}
+                                        contentContainerStyle={styles.filtrosConteudo}
+                                    >
+                                        {filtros.map((nome) => (
+                                            <TouchableOpacity
+                                                key={nome}
+                                                onPress={() => setFiltro(nome)}
+                                                style={[
+                                                    styles.filtro,
+                                                    filtro === nome && styles.filtroAtivo,
+                                                ]}
+                                            >
+                                                <Text
+                                                    style={[
+                                                        styles.textoFiltro,
+                                                        filtro === nome && styles.textoFiltroAtivo,
+                                                    ]}
+                                                >
+                                                    {nome}
+                                                </Text>
+                                            </TouchableOpacity>
+                                        ))}
+                                    </ScrollView>
+                                )}
 
                                 <TouchableOpacity
                                     style={styles.botaoAdicionar}
@@ -302,36 +334,46 @@ export default function TelaInicialGESTAO() {
                                 </TouchableOpacity>
                             </View>
 
+                            {/* RESULTADOS */}
                             <View style={styles.resultadosCabecalho}>
                                 <Text style={styles.resultadosTitulo}>
                                     Resultados
                                 </Text>
 
-                                <TouchableOpacity
-                                    onPress={() => setFiltro('Todos')}
-                                >
+                                <TouchableOpacity onPress={() => setFiltro('Todos')}>
                                     <Text style={styles.verTodas}>
                                         Ver todas
                                     </Text>
                                 </TouchableOpacity>
                             </View>
 
-                            <View style={styles.grade}>
+                            <View
+                                style={[
+                                    styles.grade,
+                                    celular && styles.gradeCelular,
+                                ]}
+                            >
                                 {salasFiltradas.map((item) => (
                                     <View
-                                        style={styles.cartao}
+                                        style={[
+                                            styles.cartao,
+                                            celular && styles.cartaoCelular,
+                                        ]}
                                         key={item.id}
                                     >
                                         <View style={styles.cartaoConteudo}>
                                             <View
                                                 style={[
                                                     styles.etiqueta,
-                                                    {
-                                                        backgroundColor: corStatus(item.status),
-                                                    },
+                                                    { backgroundColor: corStatus(item.status) },
                                                 ]}
                                             >
-                                                <Text style={styles.etiquetaTexto}>
+                                                <Text
+                                                    style={[
+                                                        styles.etiquetaTexto,
+                                                        item.status === 'Reservada' && styles.etiquetaReservada,
+                                                    ]}
+                                                >
                                                     {item.status}
                                                 </Text>
                                             </View>
@@ -372,6 +414,32 @@ export default function TelaInicialGESTAO() {
                             </View>
                         </ScrollView>
                     </LinearGradient>
+
+                    {/* RODAPÉ MOBILE */}
+                    {celular && (
+                        <View style={styles.menuCelular}>
+                            {itensMenu.map((item, index) => (
+                                <TouchableOpacity
+                                    key={item.nome}
+                                    style={styles.itemMenuCelular}
+                                    activeOpacity={0.75}
+                                >
+                                    <Image
+                                        source={item.icone}
+                                        style={[
+                                            styles.iconeMenuCelular,
+                                            index === 0 && styles.iconeMenuAtivoCelular,
+                                        ]}
+                                        resizeMode="contain"
+                                    />
+
+                                    <Text style={styles.textoMenuCelular}>
+                                        {item.nome === 'Reservadas' ? 'Reservas' : item.nome}
+                                    </Text>
+                                </TouchableOpacity>
+                            ))}
+                        </View>
+                    )}
                 </View>
             </View>
         </View>
