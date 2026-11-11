@@ -1,11 +1,3 @@
-
-// ========================================
-// EDITAR PERFIL
-// REACT NATIVE + EXPO
-// DESKTOP E CELULAR RESPONSIVOS
-// CAMPOS INICIALMENTE VAZIOS
-// ========================================
-
 import React, { useState } from "react";
 
 import {

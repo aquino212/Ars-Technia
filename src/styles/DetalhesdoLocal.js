@@ -1,4 +1,3 @@
-
 import { StyleSheet } from 'react-native';
 
 const CORES = {
@@ -13,6 +12,8 @@ const CORES = {
 
 const styles = StyleSheet.create({
 
+    /* TELA GERAL */
+
     tela: {
         flex: 1,
         backgroundColor: CORES.fundo,
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
     },
 
-    /* CABEÇALHO */
+    /* CABEÇALHO DESKTOP */
 
     cabecalho: {
         minHeight: 60,
@@ -389,13 +390,27 @@ const styles = StyleSheet.create({
         flexDirection: 'column-reverse',
     },
 
+    areaPrincipalCelular: {
+        paddingHorizontal: 15,
+        paddingTop: 34,
+    },
+
+    conteudoRolavelCelular: {
+        paddingBottom: 0,
+        flexGrow: 1,
+    },
+
+    tituloPrincipalCelular: {
+        fontSize: 18,
+    },
+
     menuCelular: {
         width: '100%',
-        height: 68,
-        minHeight: 68,
+        height: 63,
+        minHeight: 63,
         paddingHorizontal: 5,
-        paddingTop: 7,
-        paddingBottom: 4,
+        paddingTop: 5,
+        paddingBottom: 3,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around',
@@ -439,15 +454,17 @@ const styles = StyleSheet.create({
         color: '#FFCEAB',
     },
 
+    /* CARTÃO MOBILE */
+
     cartaoMobile: {
         backgroundColor: 'rgba(248,248,248,0.96)',
         borderWidth: 1,
         borderColor: '#B5C9D3',
-        borderRadius: 16,
-        padding: 14,
-        marginTop: 25,
+        borderRadius: 17,
+        padding: 15,
+        marginTop: 27,
         marginHorizontal: 1,
-        minHeight: 580,
+        minHeight: 620,
     },
 
     linhaSalaMobile: {
@@ -459,7 +476,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat-Bold',
         fontSize: 23,
         color: '#111111',
-        marginTop: 8,
+        marginTop: 9,
         marginBottom: 7,
     },
 
@@ -470,21 +487,59 @@ const styles = StyleSheet.create({
         marginBottom: 9,
     },
 
+    blocoSalaMobile: {
+        backgroundColor: '#F7DDBB',
+        borderRadius: 15,
+        padding: 14,
+    },
+
+    informacoesSalaMobile: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 12,
+    },
+
+    areaImagemMobile: {
+        width: '46%',
+        height: 83,
+        backgroundColor: CORES.branco,
+        borderRadius: 14,
+        overflow: 'hidden',
+    },
+
+    fotoSalaMobile: {
+        width: '100%',
+        height: '100%',
+    },
+
+    dadosSalaMobile: {
+        flex: 1,
+        minWidth: 0,
+        gap: 8,
+        paddingVertical: 0,
+    },
+
+    dadoSalaMobile: {
+        fontFamily: 'Montserrat-SemiBold',
+        color: '#111111',
+        fontSize: 10,
+    },
+
     comunicacaoMobile: {
         backgroundColor: CORES.roxo,
         borderRadius: 15,
         padding: 12,
-        minHeight: 79,
-        marginTop: 25,
+        minHeight: 83,
+        marginTop: 26,
     },
 
-    botaoSolicitacao: {
+    botaoSolicitacaoMobile: {
         backgroundColor: CORES.azul,
         borderRadius: 11,
-        minHeight: 40,
+        height: 44,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 100,
+        marginTop: 116,
         paddingHorizontal: 8,
     },
 
