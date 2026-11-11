@@ -1,26 +1,23 @@
-import React from 'react';
-import { AppProvider, useApp } from './src/context/context';
-import { useFonts, Montserrat_400Regular, Montserrat_600SemiBold, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+import React, { useState } from 'react';
 import TelaInicial from './src/screens/TelaInicial';
-import DetalhesdoLocal from './src/screens/DetalhesdoLocal';
-
-function Roteador() {
-  const { telaAtual } = useApp();
-
-  switch (telaAtual) {
-    case 'Inicio':
-      return <TelaInicial />;
-    case 'DetalhesdoLocal':
-      return <DetalhesdoLocal />;
-    default:
-      return <TelaInicial />;
-  }
-}
+import VerificacaoAgendamento from './src/screens/VerificacaoAgendamento';
 
 export default function App() {
+  const [telaAtual, setTelaAtual] = useState('Solicitações');
+
+  if (telaAtual === 'Solicitações') {
+    return (
+      <VerificacaoAgendamento
+        itemAtivo={telaAtual}
+        onNavegar={(proximaTela) => setTelaAtual(proximaTela)}
+      />
+    );
+  }
+
   return (
-    <AppProvider>
-      <Roteador />
-    </AppProvider>
+    <TelaInicial
+      itemAtivo={telaAtual}
+      onNavegar={(proximaTela) => setTelaAtual(proximaTela)}
+    />
   );
 }

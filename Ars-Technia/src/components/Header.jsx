@@ -1,33 +1,40 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
-import { styles } from '../styles/Header';
+import styles from '../styles/Header';
 
-import LogoEstrela from '../../assets/LogoCamera.png';
-import SolicitacoesIcon from '../../assets/Solicitacoes.png';
-import PerfilIcon from '../../assets/Perfil.png';
-
-export default function Header({ nomeUsuario = 'Aléxia Victória' }) {
+export default function Header() {
   return (
-    <View style={styles.header}>
-      <View style={styles.brandContainer}>
-        <Image 
-          source={LogoEstrela} 
-          style={styles.logoImage} 
-          resizeMode="contain" 
+    <View style={styles.cabecalho}>
+      <View style={styles.logo}>
+        <Image
+          source={require('../../assets/LogoCamera.png')}
+          style={styles.imagemLogo}
+          resizeMode="contain"
         />
-        <View style={styles.brandTextContainer}>
-          <Text style={styles.brandTitle}>Minhas salas</Text>
-          <Text style={styles.brandSubtitle}>PROFESSOR</Text>
-        </View>
       </View>
 
-      <View style={styles.userProfile}>
-        <Image source={SolicitacoesIcon} style={styles.notificationIcon} resizeMode="contain" />
-        <View style={styles.avatarCircle}>
-          <Image source={PerfilIcon} style={styles.avatarIcon} resizeMode="contain" />
-        </View>
-        <Text style={styles.userName}>{nomeUsuario}</Text>
+      <View style={styles.marca}>
+        <Text style={styles.marcaTitulo}>Minhas salas</Text>
+        <Text style={styles.marcaSubtitulo}>PROFESSOR</Text>
       </View>
+
+      <View style={styles.espaco} />
+
+      <Image
+        source={require('../../assets/Solicitacoes.png')}
+        style={styles.sino}
+        resizeMode="contain"
+      />
+
+      <View style={styles.avatar}>
+        <Image
+          source={require('../../assets/Perfil.png')}
+          style={styles.avatarIcone}
+          resizeMode="contain"
+        />
+      </View>
+
+      <Text style={styles.usuario}>Alexia Vitória</Text>
     </View>
   );
 }

@@ -1,164 +1,206 @@
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
+const CORES = {
+  fundo: '#A6BCC9',
+  azul: '#357DBF',
+  bordaInput: '#CBD5E1',
+};
+
+const styles = StyleSheet.create({
   tela: {
     flex: 1,
-    minHeight: '100vh',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: CORES.fundo,
   },
+
+  aplicativo: {
+    flex: 1,
+    backgroundColor: CORES.fundo,
+    overflow: 'hidden',
+  },
+
   conteudo: {
     flex: 1,
     flexDirection: 'row',
-    flexWrap: 'wrap',
+    minHeight: 0,
   },
+
+  conteudoCelular: {
+    flexDirection: 'column',
+  },
+
   areaPrincipal: {
     flex: 1,
-    minWidth: 300,
-    paddingHorizontal: '4%',
-    paddingVertical: 24,
+    minWidth: 0,
+    paddingHorizontal: 28,
+    paddingTop: 24,
   },
+
+  areaPrincipalCelular: {
+    paddingHorizontal: 16,
+    paddingTop: 16,
+  },
+
   conteudoRolavel: {
-    paddingBottom: 40,
+    paddingBottom: 30,
   },
+
+  conteudoRolavelCelular: {
+    paddingBottom: 80,
+  },
+
   ola: {
     fontSize: 14,
     color: '#475569',
     marginBottom: 4,
   },
+
   linhaTitulo: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    marginBottom: 20,
     gap: 16,
-    marginBottom: 24,
+    width: '100%',
   },
+
   tituloPrincipal: {
     fontSize: 26,
     fontWeight: 'bold',
     color: '#0F172A',
   },
+
+  tituloPrincipalCelular: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#0F172A',
+    marginBottom: 12,
+  },
+
   busca: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 25,
-    paddingHorizontal: 16,
-    paddingVertical: 10,
+    backgroundColor: '#FFF8F3',
+    borderRadius: 14,
+    paddingHorizontal: 14,
+    height: 44,
     flex: 1,
-    minWidth: 240,
-    maxWidth: 420,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: CORES.bordaInput,
   },
+
+  // Específico para mobile: impede o colapso e fixa a altura em 44px
+  buscaCelular: {
+    width: '100%',
+    flex: 0,
+    height: 44,
+    minHeight: 44,
+    marginBottom: 16,
+  },
+
+  buscaFocada: {
+    borderColor: CORES.azul,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1.5,
+  },
+
   lupa: {
     fontSize: 16,
     color: '#64748B',
-    marginRight: 10,
+    marginRight: 8,
   },
+
   inputBusca: {
     flex: 1,
     fontSize: 13,
     color: '#1E293B',
+    height: '100%',
+    borderWidth: 0,
+    outlineWidth: 0,
+    outlineStyle: 'none',
   },
+
   linhaFiltros: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 24,
+    marginBottom: 20,
   },
+
+  linhaFiltrosCelular: {
+    marginBottom: 20,
+  },
+
+  filtrosGridCelular: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+
   listaFiltros: {
-    flexGrow: 0,
-    width: '100%',
-  },
-  filtrosConteudo: {
     flexDirection: 'row',
-    gap: 10,
-    paddingRight: 16,
   },
+
+  filtrosConteudo: {
+    gap: 8,
+  },
+
   filtro: {
-    paddingHorizontal: 18,
+    paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 20,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
     borderWidth: 1,
     borderColor: '#E2E8F0',
   },
+
   filtroAtivo: {
-    backgroundColor: '#357DBF',
-    borderColor: '#357DBF',
+    backgroundColor: CORES.azul,
+    borderColor: CORES.azul,
   },
+
   textoFiltro: {
-    fontSize: 13,
-    color: '#475569',
-  },
-  textoFiltroAtivo: {
-    color: '#FFFFFF',
+    fontSize: 12,
+    color: '#1E293B',
     fontWeight: '600',
   },
+
+  textoFiltroAtivo: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+  },
+
   resultadosCabecalho: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 16,
   },
+
   resultadosTitulo: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#0F172A',
   },
+
   verTodas: {
-    fontSize: 13,
-    color: '#357DBF',
+    fontSize: 12,
+    color: CORES.azul,
     fontWeight: '600',
   },
+
   grade: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 16,
   },
-  cartao: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 320,
-    maxWidth: '100%',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    padding: 18,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.04,
-    shadowRadius: 8,
-    elevation: 2,
+
+  gradeCelular: {
+    flexDirection: 'column',
+    width: '100%',
+    gap: 12,
   },
-  cartaoConteudo: {
-    flex: 1,
-  },
-  etiqueta: {
-    alignSelf: 'flex-start',
-    paddingHorizontal: 12,
-    paddingVertical: 4,
-    borderRadius: 12,
-    marginBottom: 10,
-  },
-  etiquetaTexto: {
-    fontSize: 12,
-  },
-  nomeSala: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: '#1E293B',
-    marginBottom: 6,
-  },
-  detalheSala: {
-    fontSize: 12,
-    color: '#64748B',
-  },
+
   semResultados: {
     fontSize: 14,
     color: '#64748B',
     marginTop: 20,
   },
 });
+
+export default styles;

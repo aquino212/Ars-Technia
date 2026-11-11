@@ -1,63 +1,79 @@
 import { StyleSheet } from 'react-native';
 
+const CORES = {
+  azul: '#357DBF',
+  azulEscuro: '#285D8C',
+  fundo: '#A6BCC9',
+  creme: '#FFF4EB',
+  branco: '#F1F0EF',
+  texto: '#171717',
+  rosa: '#D9A4A4',
+  verde: '#B6D6A7',
+  amarelo: '#F0E27A',
+  roxo: '#3E4BCC',
+  destaque: '#FFCEAB',
+};
+
 export const styles = StyleSheet.create({
-  header: {
-    width: '100%',
-    height: 65,
-    backgroundColor: '#FFFFFF',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: '3%',
-    borderBottomWidth: 1,
-    borderBottomColor: '#F1F5F9',
-  },
-  brandContainer: {
+  cabecalho: {
+    minHeight: 48,
+    backgroundColor: '#F0EFEE',
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
+    paddingHorizontal: 12,
   },
-  logoImage: {
-    width: 32,
-    height: 32,
-  },
-  brandTextContainer: {
-    justifyContent: 'center',
-  },
-  brandTitle: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: '#357DBF',
-  },
-  brandSubtitle: {
-    fontSize: 10,
-    color: '#94A3B8',
-    letterSpacing: 1,
-  },
-  userProfile: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 14,
-  },
-  notificationIcon: {
-    width: 20,
-    height: 20,
-  },
-  avatarCircle: {
+  logo: {
     width: 34,
     height: 34,
-    borderRadius: 17,
-    backgroundColor: '#E2E8F0',
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
   },
-  avatarIcon: {
-    width: 18,
-    height: 18,
+  imagemLogo: {
+    width: 34,
+    height: 34,
   },
-  userName: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#334155',
+  marca: {
+    justifyContent: 'center',
+  },
+  marcaTitulo: {
+    fontSize: 12,
+    fontFamily: 'Montserrat-Bold',
+    color: CORES.azul,
+  },
+  marcaSubtitulo: {
+    fontSize: 8,
+    fontFamily: 'Montserrat-Regular',
+    color: CORES.azul,
+    marginTop: 2,
+  },
+  espaco: {
+    flex: 1,
+  },
+  sino: {
+    width: 20,
+    height: 20,
+    marginRight: 12,
+  },
+  avatar: {
+    width: 25,
+    height: 25,
+    borderRadius: 13,
+    backgroundColor: '#E3D2B9',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 7,
+  },
+  avatarIcone: {
+    width: 20,
+    height: 20,
+    tintColor: CORES.azul,
+  },
+  usuario: {
+    color: CORES.azul,
+    fontSize: 10,
+    fontFamily: 'Montserrat-Regular',
   },
 });
+
+export default styles;
