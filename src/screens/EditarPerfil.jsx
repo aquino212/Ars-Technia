@@ -38,7 +38,7 @@ import {
 
 const Logo = require("../../assets/Logo.png");
 const LogoCamera = require("../../assets/LogoCamera.png");
-const Perfil = require("../../assets/Perfil.png");
+const Perfil = require("../../assets/PerfilPreto.png");
 const PerfilAzul = require("../../assets/PerfilAzul.png");
 
 const Inicio = require("../../assets/Inicio.png");
@@ -361,11 +361,11 @@ export default function EditarPerfil({
 
         <View style={{ flex: 1 }}>
           <Text style={styles.nomeUsuario}>
-            Meu perfil
+            Juscelino
           </Text>
 
           <Text style={styles.emailUsuario}>
-            Preencha suas informações abaixo
+           jussaADM@gmail.com
           </Text>
         </View>
       </View>
@@ -565,6 +565,7 @@ export default function EditarPerfil({
   // ======================================
 
   return (
+    
     <View style={styles.pagina}>
       <StatusBar
         backgroundColor={mobile ? "#FFF3E9" : "#F5F5F5"}
@@ -739,6 +740,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 12,
+
   },
 
   iconeNotificacao: {
@@ -765,7 +767,7 @@ const styles = StyleSheet.create({
   },
 
   tituloMenuLateral: {
-    color: "#FFFFFF",
+    color: "#F7DCBA",
     fontSize: 8,
     marginBottom: 12,
   },
@@ -816,7 +818,7 @@ const styles = StyleSheet.create({
 
   textoRodape: {
     fontSize: 9,
-    color: "#FFFFFF",
+    color: "#F7DCBA",
   },
 
   versao: {
