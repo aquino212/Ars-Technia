@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
         minHeight: '100%',
     },
 
+
     /* LOGO DESKTOP */
 
     areaLogo: {
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
         height: 400,
     },
 
+
     /* FORMULÁRIO DESKTOP */
 
     areaFormulario: {
@@ -65,33 +67,35 @@ const styles = StyleSheet.create({
         maxWidth: 445,
     },
 
+
     /* TÍTULOS */
 
     titulo: {
         fontFamily: 'Montserrat-Bold',
-        fontSize: 20,
+        fontSize: 23,
         color: '#101010',
         marginBottom: 3,
     },
 
     subtitulo: {
         fontFamily: 'Montserrat-Regular',
-        fontSize: 13,
+        fontSize: 14,
         color: '#111111',
         marginBottom: 44,
     },
+
 
     /* CAMPOS */
 
     grupoCampo: {
         width: '100%',
-        marginBottom: 12,
+        marginBottom: 11,
     },
 
     rotulo: {
         fontFamily: 'Montserrat-SemiBold',
         fontSize: 12,
-        color: '#30385F',
+        color: '#171717',
         marginBottom: 9,
         marginLeft: 1,
     },
@@ -109,41 +113,45 @@ const styles = StyleSheet.create({
         fontSize: 10,
     },
 
+
     /* ESQUECEU A SENHA */
 
     areaEsqueceu: {
         alignSelf: 'flex-start',
         marginTop: 0,
+        marginBottom: 9,
     },
 
-    textoEsqueceu: {
-        fontFamily: 'Montserrat-SemiBold',
+    linkEsqueceu: {
+        fontFamily: 'Montserrat-Regular',
         fontSize: 9,
-        color: '#111111',
+        color: '#171717',
     },
+
 
     /* CADASTRO */
 
-    areaCadastrar: {
+    areaCadastro: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: 9,
-        gap: 7,
+        gap: 8,
+        marginBottom: 48,
     },
 
-    textoCadastrar: {
+    textoCadastro: {
         fontFamily: 'Montserrat-Regular',
         fontSize: 9,
         color: '#30385F',
     },
 
-    linkCadastrar: {
+    linkCadastro: {
         fontFamily: 'Montserrat-Bold',
         fontSize: 9,
-        color: '#111111',
+        color: '#171717',
     },
 
-    /* BOTÃO ENTRAR */
+
+    /* BOTÃO DESKTOP */
 
     botaoEntrar: {
         width: '100%',
@@ -152,7 +160,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 48,
     },
 
     textoBotao: {
@@ -161,33 +168,40 @@ const styles = StyleSheet.create({
         fontSize: 11,
     },
 
+
     /* ================================= */
-    /* MOBILE */
+    /* RESPONSIVIDADE MOBILE */
     /* ================================= */
 
     conteudoCelular: {
         flexDirection: 'column',
-        minHeight: 650,
+        minHeight: 800,
     },
+
+
+    /* LOGO MOBILE */
 
     areaLogoCelular: {
         width: '100%',
-        height: 145,
-        minHeight: 145,
+        height: 135,
+        minHeight: 135,
     },
 
     logoCelular: {
         width: 180,
-        height: 135,
+        height: 130,
     },
+
+
+    /* FORMULÁRIO MOBILE */
 
     areaFormularioCelular: {
         width: '100%',
         flex: 1,
         paddingHorizontal: 26,
-        paddingTop: 12,
+        paddingTop: 0,
         paddingBottom: 25,
-        minHeight: 505,
+        minHeight: 665,
         justifyContent: 'flex-start',
     },
 
@@ -196,7 +210,8 @@ const styles = StyleSheet.create({
         maxWidth: '100%',
     },
 
-    /* TÍTULOS */
+
+    /* TÍTULOS MOBILE */
 
     tituloCelular: {
         fontSize: 23,
@@ -208,14 +223,15 @@ const styles = StyleSheet.create({
         fontSize: 11,
         lineHeight: 15,
         textAlign: 'center',
-        marginBottom: 19,
+        marginBottom: 25,
     },
 
-    /* CAMPOS */
+
+    /* CAMPOS MOBILE */
 
     grupoCampoCelular: {
         width: '100%',
-        marginBottom: 11,
+        marginBottom: 15,
     },
 
     rotuloCelular: {
@@ -229,37 +245,44 @@ const styles = StyleSheet.create({
         height: 45,
         borderRadius: 8,
         paddingHorizontal: 12,
+        fontSize: 11,
+    },
+
+
+    /* ESQUECEU A SENHA MOBILE */
+
+    areaEsqueceuCelular: {
+        marginTop: 0,
+        marginBottom: 12,
+    },
+
+    linkEsqueceuCelular: {
         fontSize: 10,
     },
 
-    /* ESQUECEU A SENHA */
 
-    textoEsqueceuCelular: {
-        fontSize: 9,
-    },
+    /* CADASTRO MOBILE */
 
-    /* CADASTRO */
-
-    areaCadastrarCelular: {
-        marginTop: 10,
+    areaCadastroCelular: {
+        marginBottom: 35,
         gap: 6,
     },
 
-    textoCadastrarCelular: {
+    textoCadastroCelular: {
         fontSize: 10,
     },
 
-    linkCadastrarCelular: {
+    linkCadastroCelular: {
         fontSize: 10,
         color: CORES.azul,
     },
 
-    /* BOTÃO */
+
+    /* BOTÃO MOBILE */
 
     botaoEntrarCelular: {
         height: 49,
         borderRadius: 8,
-        marginTop: 42,
     },
 
     textoBotaoCelular: {

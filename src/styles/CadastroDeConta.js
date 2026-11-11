@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         maxWidth: 445,
     },
 
-    /* TÍTULOS */
+    /* TÍTULOS DESKTOP */
 
     titulo: {
         fontFamily: 'Montserrat-Bold',
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         marginBottom: 44,
     },
 
-    /* CAMPOS */
+    /* CAMPOS DESKTOP */
 
     grupoCampo: {
         width: '100%',
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
         fontSize: 10,
     },
 
-    /* TERMOS */
+    /* TERMOS DESKTOP */
 
     areaTermos: {
         flexDirection: 'row',
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
         flexShrink: 1,
     },
 
-    /* BOTÃO */
+    /* BOTÃO DESKTOP */
 
     botaoCriar: {
         width: '100%',
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
         fontSize: 11,
     },
 
-    /* ENTRAR */
+    /* ENTRAR DESKTOP */
 
     areaEntrar: {
         flexDirection: 'row',
@@ -188,9 +188,8 @@ const styles = StyleSheet.create({
         color: '#111111',
     },
 
-
     /* ================================= */
-    /* MOBILE */
+    /* RESPONSIVIDADE MOBILE */
     /* ================================= */
 
     conteudoCelular: {
@@ -224,7 +223,7 @@ const styles = StyleSheet.create({
         maxWidth: '100%',
     },
 
-    /* TÍTULO */
+    /* TÍTULO MOBILE */
 
     tituloCelular: {
         fontSize: 23,
@@ -239,7 +238,7 @@ const styles = StyleSheet.create({
         marginBottom: 19,
     },
 
-    /* CAMPOS */
+    /* CAMPOS MOBILE */
 
     grupoCampoCelular: {
         width: '100%',
@@ -260,7 +259,7 @@ const styles = StyleSheet.create({
         fontSize: 10,
     },
 
-    /* TERMOS */
+    /* TERMOS MOBILE */
 
     areaTermosCelular: {
         width: '100%',
@@ -278,7 +277,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
     },
 
-    /* BOTÃO */
+    /* BOTÃO MOBILE */
 
     botaoCriarCelular: {
         height: 49,
@@ -289,7 +288,7 @@ const styles = StyleSheet.create({
         fontSize: 13,
     },
 
-    /* ENTRAR */
+    /* ENTRAR MOBILE */
 
     areaEntrarCelular: {
         marginTop: 10,
@@ -303,7 +302,6 @@ const styles = StyleSheet.create({
         fontSize: 10,
         color: CORES.azul,
     },
-
 
 });
 
